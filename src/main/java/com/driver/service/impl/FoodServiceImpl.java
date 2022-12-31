@@ -14,6 +14,7 @@ public class FoodServiceImpl implements FoodService {
     @Autowired
     FoodRepository RepoFood;
 
+    //creating food dto
     @Override
     public FoodDto createFood(FoodDto food) {
         FoodEntity foodEntity=FoodEntity.builder().foodCategory(food.getFoodCategory()).foodId(food.getFoodId()).foodName(food.getFoodName()).foodPrice(food.getFoodPrice()).build();
@@ -21,6 +22,8 @@ public class FoodServiceImpl implements FoodService {
         return FoodDto.builder().foodId(foodEntity.getFoodId()).foodCategory(foodEntity.getFoodCategory()).foodName(foodEntity.getFoodName()).foodPrice(foodEntity.getFoodPrice()).id(foodEntity.getId()).build();
     }
 
+
+    // getting food byid
     @Override
     public FoodDto getFoodById(String foodId) throws Exception {
         FoodEntity foodEntity= RepoFood.findByFoodId(foodId);
@@ -30,6 +33,8 @@ public class FoodServiceImpl implements FoodService {
         return FoodDto.builder().foodId(foodEntity.getFoodId()).foodPrice(foodEntity.getFoodPrice()).foodName(foodEntity.getFoodName()).foodCategory(foodEntity.getFoodCategory()).id(foodEntity.getId()).build();
     }
 
+
+    // updating food dto
     @Override
     public FoodDto updateFoodDetails(String foodId, FoodDto foodDetails) throws Exception {
         FoodEntity foodEntity= RepoFood.findByFoodId(foodId);
@@ -42,6 +47,8 @@ public class FoodServiceImpl implements FoodService {
         return FoodDto.builder().foodId(foodEntity.getFoodId()).foodPrice(foodEntity.getFoodPrice()).foodName(foodEntity.getFoodName()).foodCategory(foodEntity.getFoodCategory()).id(foodEntity.getId()).build();
     }
 
+
+    // delete food item
     @Override
     public void deleteFoodItem(String id) throws Exception {
         RepoFood.delete(RepoFood.findByFoodId(id));

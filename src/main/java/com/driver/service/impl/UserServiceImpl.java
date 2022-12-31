@@ -12,7 +12,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     // dependancy injection
     @Autowired
-    UserRepository RepoUse;
+    UserRepository RepoUser;
 
 
     // converting to user dto
